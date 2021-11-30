@@ -1,3 +1,6 @@
+# Docker-compose files
+storage
+
 # Logs
 *.log
 npm-debug.log*
