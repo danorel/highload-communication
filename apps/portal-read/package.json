@@ -1,8 +1,8 @@
 {
   "name": "@communication/portal-read",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "API for read operations",
+  "author": "Danyil Orel",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

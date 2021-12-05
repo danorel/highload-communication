@@ -443,11 +443,11 @@
             "packageName": "@communication/portal-write",
             "projectFolder": "apps/portal-write",
             "reviewCategory": "api"
+        },
+        {
+            "packageName": "@communication/database",
+            "projectFolder": "libs/database",
+            "reviewCategory": "tools"
         }
-        // {
-        //   "packageName": "my-toolchain",
-        //   "projectFolder": "tools/my-toolchain",
-        //   "reviewCategory": "tools"
-        // }
     ]
 }
