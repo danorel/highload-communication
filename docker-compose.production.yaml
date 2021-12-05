@@ -14,7 +14,7 @@ services:
         depends_on:
             - redis
         expose:
-            - ${READ_PORT}
+            - ${PORTAL_READ_PORT}
         volumes:
             - ./apps/portal-read:/app
         command: npm start:dev
@@ -30,7 +30,7 @@ services:
         depends_on:
             - rabbitmq
         expose:
-            - ${WRITE_PORT}
+            - ${PORTAL_WRITE_PORT}
         volumes:
             - ./apps/portal-write:/app
         command: npm start:dev
@@ -38,9 +38,12 @@ services:
             - writeonly
 
     redis:
-        image: debian:bullseye-slim
+        image: redis:alpine
+        environment:
+            - REDIS_REPLICATION_MODE=master
         expose:
             - ${REDIS_PORT}
+        command: redis-server --requirepass ${REDIS_PASSWD}
         networks:
             - readonly
 

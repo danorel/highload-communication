@@ -2,9 +2,12 @@ version: '3.8'
 
 services:
     redis:
-        image: debian:bullseye-slim
+        image: redis:alpine
+        environment:
+            - REDIS_REPLICATION_MODE=master
         ports:
             - ${REDIS_PORT}:${REDIS_PORT}
+        command: redis-server --requirepass ${REDIS_PASSWD}
 
     rabbitmq:
         image: rabbitmq:3-management-alpine
