@@ -5,31 +5,35 @@ networks:
     writeonly:
 
 services:
-    read:
-        image: node:16
-        working_dir: ./apps/portal-read
+    portal-read:
+        restart: unless-stopped
+        build:
+            context: ./apps/portal-read
+            target: production
+            dockerfile: Dockerfile
         depends_on:
             - redis
         expose:
             - ${READ_PORT}
         volumes:
-            - ./apps/portal-read/pmpm-lock.yaml:pnpm-lock.yaml
-        command:
-            sh -c 'rushx install && rushx start'
+            - ./apps/portal-read:/app
+        command: npm start:dev
         networks:
             - readonly
 
-    write:
-        image: node:16
-        working_dir: ./apps/portal-write
+    portal-write:
+        restart: unless-stopped
+        build:
+            context: ./apps/portal-write
+            target: production
+            dockerfile: Dockerfile
         depends_on:
             - rabbitmq
         expose:
             - ${WRITE_PORT}
         volumes:
-            - ./apps/portal-write/pmpm-lock.yaml:pnpm-lock.yaml
-        command:
-            sh -c 'rushx install && rushx start'
+            - ./apps/portal-write:/app
+        command: npm start:dev
         networks:
             - writeonly
 
@@ -42,9 +46,9 @@ services:
 
     rabbitmq:
         image: rabbitmq:3-management-alpine
-        ports:
-            - ${RABBIT_MQ_API_PORT}:${RABBIT_MQ_API_PORT}
-            - ${RABBIT_MQ_UI_PORT}:${RABBIT_MQ_UI_PORT}
+        expose:
+            - ${RABBIT_MQ_API_PORT}
+            - ${RABBIT_MQ_UI_PORT}
         volumes:
             - ./storage/rabbitmq/data/:/var/lib/rabbitmq/
             - ./storage/rabbitmq/log/:/var/log/rabbitmq/

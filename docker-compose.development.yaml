@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+    redis:
+        image: debian:bullseye-slim
+        ports:
+            - ${REDIS_PORT}:${REDIS_PORT}
+
+    rabbitmq:
+        image: rabbitmq:3-management-alpine
+        ports:
+            - ${RABBIT_MQ_API_PORT}:${RABBIT_MQ_API_PORT}
+            - ${RABBIT_MQ_UI_PORT}:${RABBIT_MQ_UI_PORT}
+        volumes:
+            - ./storage/rabbitmq/data/:/var/lib/rabbitmq/
+            - ./storage/rabbitmq/log/:/var/log/rabbitmq/
