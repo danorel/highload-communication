@@ -5,6 +5,24 @@ networks:
     writeonly:
 
 services:
+    portal-database:
+        restart: unless-stopped
+        build:
+            context: ./apps/portal-database
+            target: production
+            dockerfile: Dockerfile
+        depends_on:
+            - redis
+            - mongo
+        expose:
+            - ${PORTAL_DATABASE_PORT}
+        volumes:
+            - ./apps/portal-database:/app
+        command: npm start:dev
+        networks:
+            - readonly
+            - writeonly
+
     portal-read:
         restart: unless-stopped
         build:
@@ -13,7 +31,7 @@ services:
             dockerfile: Dockerfile
         depends_on:
             - redis
-            - mongo
+            - portal-database
         expose:
             - ${PORTAL_READ_PORT}
         volumes:
@@ -30,7 +48,7 @@ services:
             dockerfile: Dockerfile
         depends_on:
             - rabbitmq
-            - mongo
+            - portal-database
         expose:
             - ${PORTAL_WRITE_PORT}
         volumes:
@@ -45,8 +63,8 @@ services:
         command: [ --auth ]
         environment:
             - MONGO_INIT_DATABASE=${MONGO_DATABASE}
-            - MONGO_INIT_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
-            - MONGO_INIT_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+            - MONGO_INIT_ROOT_USERNAME=${MONGO_USERNAME}
+            - MONGO_INIT_ROOT_PASSWORD=${MONGO_PASSWORD}
             - MONGO_LOG_DIR=/data/logs
             - MONGO_DATA_DIR=/data/db
         ports:

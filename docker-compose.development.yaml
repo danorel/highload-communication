@@ -7,8 +7,8 @@ services:
         command: [--auth]
         environment:
             - MONGO_INIT_DATABASE=${MONGO_DATABASE}
-            - MONGO_INIT_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
-            - MONGO_INIT_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+            - MONGO_INIT_ROOT_USERNAME=${MONGO_USERNAME}
+            - MONGO_INIT_ROOT_PASSWORD=${MONGO_PASSWORD}
             - MONGO_LOG_DIR=/data/logs
             - MONGO_DATA_DIR=/data/db
         ports:
