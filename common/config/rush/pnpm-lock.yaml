@@ -12,6 +12,7 @@ specifiers:
   '@rush-temp/portal-database': file:./projects/portal-database.tgz
   '@rush-temp/portal-read': file:./projects/portal-read.tgz
   '@rush-temp/portal-write': file:./projects/portal-write.tgz
+  '@rush-temp/types': file:./projects/types.tgz
   '@types/express': ^4.17.13
   '@types/jest': ^27.0.1
   '@types/node': ^16.0.0
@@ -46,6 +47,7 @@ dependencies:
   '@rush-temp/portal-database': file:projects/portal-database.tgz
   '@rush-temp/portal-read': file:projects/portal-read.tgz
   '@rush-temp/portal-write': file:projects/portal-write.tgz
+  '@rush-temp/types': file:projects/types.tgz
   '@types/express': 4.17.13
   '@types/jest': 27.0.3
   '@types/node': 16.11.11
@@ -809,6 +811,33 @@ packages:
       - uglify-js
       - vue-template-compiler
       - webpack-cli
+    dev: false
+
+  /@nestjs/common/8.2.3_941914a00055be52b0142abd237b792d:
+    resolution: {integrity: sha512-slXVVMc9tZG6ZaARXkTUsSqZbkEcc0hVKb4mPLxS9mjXmDspUleGQakZ5OzniiEWqzO299BVlEbm6TGyoGbpNg==}
+    peerDependencies:
+      cache-manager: '*'
+      class-transformer: '*'
+      class-validator: '*'
+      reflect-metadata: ^0.1.12
+      rxjs: ^7.1.0
+    peerDependenciesMeta:
+      cache-manager:
+        optional: true
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+    dependencies:
+      axios: 0.24.0
+      class-validator: 0.13.2
+      iterare: 1.2.1
+      reflect-metadata: 0.1.13
+      rxjs: 7.4.0
+      tslib: 2.3.1
+      uuid: 8.3.2
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /@nestjs/common/8.2.3_ad16f1f28877c5242670873e13562245:
@@ -1907,6 +1936,13 @@ packages:
 
   /cjs-module-lexer/1.2.2:
     resolution: {integrity: sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==}
+    dev: false
+
+  /class-validator/0.13.2:
+    resolution: {integrity: sha512-yBUcQy07FPlGzUjoLuUfIOXzgynnQPPruyK1Ge2B74k9ROwnle1E+NxLWnUv5OLU8hA/qL5leAE9XnXq3byaBw==}
+    dependencies:
+      libphonenumber-js: 1.9.44
+      validator: 13.7.0
     dev: false
 
   /cli-cursor/3.1.0:
@@ -3951,6 +3987,10 @@ packages:
       type-check: 0.4.0
     dev: false
 
+  /libphonenumber-js/1.9.44:
+    resolution: {integrity: sha512-zhw8nUMJuQf7jG1dZfEOKKOS6M3QYIv3HnvB/vGohNd0QfxIQcObH3a6Y6s350H+9xgBeOXClOJkS0hJ0yvS3g==}
+    dev: false
+
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: false
@@ -5441,6 +5481,11 @@ packages:
       source-map: 0.7.3
     dev: false
 
+  /validator/13.7.0:
+    resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
+    engines: {node: '>= 0.10'}
+    dev: false
+
   /vary/1.1.2:
     resolution: {integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=}
     engines: {node: '>= 0.8'}
@@ -5688,12 +5733,12 @@ packages:
     dev: false
 
   file:projects/portal-database.tgz:
-    resolution: {integrity: sha512-oseHB/yUtLQdRB1zupft0oQF3A7BY0IXiQHl43LEn27FkBxymU3QSZihHquI7c4KN/wPvLpp3hEtj94eDFgtwA==, tarball: file:projects/portal-database.tgz}
+    resolution: {integrity: sha512-vYcOqg1NErogPF9ymIb3WvJpUQspjpNxr6rLkPDxaRlaZsUEOdXDbsZDNJhszREo+S252a8GCtsW0bKA9Lgt7w==, tarball: file:projects/portal-database.tgz}
     name: '@rush-temp/portal-database'
     version: 0.0.0
     dependencies:
       '@nestjs/cli': 8.1.5_eslint@7.32.0
-      '@nestjs/common': 8.2.3_ad16f1f28877c5242670873e13562245
+      '@nestjs/common': 8.2.3_941914a00055be52b0142abd237b792d
       '@nestjs/config': 1.1.5_4067a5d44d4606b10b1aff77c2f9d3cd
       '@nestjs/core': 8.2.3_1864eb04cdb557d7ef263925d28b0dee
       '@nestjs/mongoose': 9.0.1_0d0154760d43fc67f3da01f135df4622
@@ -5706,6 +5751,7 @@ packages:
       '@types/supertest': 2.0.11
       '@typescript-eslint/eslint-plugin': 4.33.0_d00b196ac5df1286ea7e45797bebddbc
       '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.2
+      class-validator: 0.13.2
       eslint: 7.32.0
       eslint-config-prettier: 8.3.0_eslint@7.32.0
       eslint-plugin-prettier: 3.4.1_6e6a25a49a944db0fa38418c3ba4bc86
@@ -5733,7 +5779,6 @@ packages:
       - canvas
       - chokidar
       - class-transformer
-      - class-validator
       - debug
       - esbuild
       - node-notifier
@@ -5859,4 +5904,10 @@ packages:
       - vue-template-compiler
       - webpack
       - webpack-cli
+    dev: false
+
+  file:projects/types.tgz:
+    resolution: {integrity: sha512-maxudznjgJEhASCC8FSBY42y0jNeTsC8qD+VqHy4OwuohcnBX0UtjTX4e3yJauqjefEzEwQbGTP3ZninK/VazQ==, tarball: file:projects/types.tgz}
+    name: '@rush-temp/types'
+    version: 0.0.0
     dev: false

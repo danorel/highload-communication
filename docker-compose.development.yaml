@@ -3,12 +3,13 @@ version: '3.8'
 services:
     mongo:
         image: mongo
+        container_name: mongo
         restart: always
         command: [--auth]
         environment:
-            - MONGO_INIT_DATABASE=${MONGO_DATABASE}
-            - MONGO_INIT_ROOT_USERNAME=${MONGO_USERNAME}
-            - MONGO_INIT_ROOT_PASSWORD=${MONGO_PASSWORD}
+            - MONGO_INITDB_DATABASE=${MONGO_DATABASE}
+            - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
             - MONGO_LOG_DIR=/data/logs
             - MONGO_DATA_DIR=/data/db
         ports:
@@ -19,6 +20,7 @@ services:
 
     redis:
         image: redis:alpine
+        container_name: redis
         environment:
             - REDIS_REPLICATION_MODE=master
             - REDIS_USER=${REDIS_USERNAME}
@@ -34,6 +36,7 @@ services:
 
     rabbitmq:
         image: rabbitmq:3-management-alpine
+        container_name: rabbitmq
         ports:
             - ${RABBIT_MQ_API_PORT}:${RABBIT_MQ_API_PORT}
             - ${RABBIT_MQ_UI_PORT}:${RABBIT_MQ_UI_PORT}

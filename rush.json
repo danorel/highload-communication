@@ -448,6 +448,11 @@
             "packageName": "@communication/portal-database",
             "projectFolder": "apps/portal-database",
             "reviewCategory": "api"
+        },
+        {
+            "packageName": "@communication/types",
+            "projectFolder": "tools/types",
+            "reviewCategory": "tools"
         }
     ]
 }

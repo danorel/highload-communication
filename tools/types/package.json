@@ -1,0 +1,8 @@
+{
+    "name": "@communication/types",
+    "version": "0.0.0",
+    "description": "TypeScript reusable type definitions",
+    "scripts": {
+        "build": ""
+    }
+}
