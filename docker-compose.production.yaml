@@ -14,6 +14,8 @@ services:
         depends_on:
             - redis
             - mongo
+        environment:
+            - NODE_ENV=${NODE_ENV}
         expose:
             - ${PORTAL_DATABASE_PORT}
         volumes:
@@ -32,6 +34,8 @@ services:
         depends_on:
             - redis
             - portal-database
+        environment:
+            - NODE_ENV=${NODE_ENV}
         expose:
             - ${PORTAL_READ_PORT}
         volumes:
@@ -49,6 +53,8 @@ services:
         depends_on:
             - rabbitmq
             - portal-database
+        environment:
+            - NODE_ENV=${NODE_ENV}
         expose:
             - ${PORTAL_WRITE_PORT}
         volumes:
@@ -60,7 +66,6 @@ services:
     mongo:
         image: mongo
         restart: always
-        command: [ --auth ]
         environment:
             - MONGO_INIT_DATABASE=${MONGO_DATABASE}
             - MONGO_INIT_ROOT_USERNAME=${MONGO_USERNAME}
@@ -72,9 +77,11 @@ services:
         volumes:
             - ./storage/mongo/data:/data/db
             - ./storage/mongo/log:/data/logs
+            - ./infra/mongo/:/docker-entrypoint-initdb.d/
         networks:
             - readonly
             - writeonly
+        command: mongod
 
     redis:
         image: redis:alpine

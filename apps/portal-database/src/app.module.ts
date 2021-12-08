@@ -4,23 +4,29 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import mongoConfig from "./config/mongo";
+import { ArticleModule } from "./database/article/article.module";
+import { PublisherModule } from "./database/publisher/publisher.module";
 
-import { ArticleModule } from "./domains/article/article.module";
-import { PublisherModule } from "./domains/publisher/publisher.module";
-
-const config = mongoConfig();
+import { MongoModule } from "./config/mongo/mongo.module";
+import { ApplicationModule } from "./config/application/application.module";
+import { DatabaseModule } from "./database/database.module";
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: [
+        '.env',
         '.env.development',
         '.env.development.local'
-      ],
-      load: [mongoConfig]
+      ]
     }),
-    MongooseModule.forRoot(config.url),
+    // Configuration modules
+    MongoModule,
+    ApplicationModule,
+    // Mongoose module
+    MongooseModule.forRoot('mongodb://localhost:27017/communication'),
+    // Mongo schema modules
+    DatabaseModule,
     ArticleModule,
     PublisherModule
   ],
