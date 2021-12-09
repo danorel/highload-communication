@@ -6,6 +6,7 @@ Required plan:
 - [x] Design the architecture.
 - [x] Configure docker-compose infrastructure: add services, message queues, database and cache.
 - [x] Design minimal database entities and relations between them.
+- [x] Implement read/write basic API.
 - [ ] Implement read API with cache. (Using Cache Aside pattern)
 - [ ] Implement write API with message queue. (Using RPC pattern)
 - [ ] Implement request imitator.

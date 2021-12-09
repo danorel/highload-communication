@@ -1,6 +1,6 @@
-import { IsInt, IsNotEmpty, IsString, Min } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString, Min } from "class-validator";
 
-export class PublisherCreateDto {
+export class PublisherBaseDto {
     @IsString()
     @IsNotEmpty()
     name: string;
@@ -12,5 +12,5 @@ export class PublisherCreateDto {
     @IsInt()
     @IsNotEmpty()
     @Min(0)
-    age: string;
+    age: number;
 }
