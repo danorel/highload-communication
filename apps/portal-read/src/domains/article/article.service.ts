@@ -1,19 +1,32 @@
-import { Model } from 'mongoose';
-import { Injectable, Inject } from '@nestjs/common';
-import { Article, ARTICLE_MODEL } from "@communication/schema";
+import { Injectable } from '@nestjs/common';
+import { RequestsService } from "@communication/api-utils";
+import { Article } from "@communication/schema";
 
 @Injectable()
 export class ArticleService {
-    constructor(
-        @Inject(ARTICLE_MODEL)
-        private model: Model<Article>,
-    ) {}
+    constructor(private requestsService: RequestsService) {}
 
     async findOne(id: string): Promise<Article> {
-        return this.model.findById(id).exec();
+        let article: Article;
+
+        await this.requestsService
+            .get<Article>(`http://localhost:5003/article/${id}`)
+            .subscribe((data) => {
+                article = data;
+            });
+
+        return article;
     }
 
     async findAll(): Promise<Article[]> {
-        return this.model.find().exec();
+        let articles: Article[];
+
+        await this.requestsService
+            .get<Article[]>(`http://localhost:5003/article/`)
+            .subscribe((data) => {
+                articles = data;
+            });
+
+        return articles;
     }
 }

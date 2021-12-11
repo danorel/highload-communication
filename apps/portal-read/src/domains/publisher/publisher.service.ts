@@ -1,19 +1,32 @@
-import { Model } from 'mongoose';
-import { Injectable, Inject } from '@nestjs/common';
-import { Publisher, PUBLISHER_MODEL } from "@communication/schema";
+import { Injectable } from '@nestjs/common';
+import { RequestsService } from "@communication/api-utils";
+import { Publisher } from "@communication/schema";
 
 @Injectable()
 export class PublisherService {
-    constructor(
-        @Inject(PUBLISHER_MODEL)
-        private model: Model<Publisher>,
-    ) {}
+    constructor(private requestsService: RequestsService) {}
 
     async findOne(id: string): Promise<Publisher> {
-        return this.model.findById(id).exec();
+        let publisher: Publisher;
+
+        await this.requestsService
+            .get<Publisher>(`http://localhost:5003/publisher/${id}`)
+            .subscribe((data) => {
+                publisher = data;
+            });
+
+        return publisher;
     }
 
     async findAll(): Promise<Publisher[]> {
-        return this.model.find().exec();
+        let publishers: Publisher[];
+
+        await this.requestsService
+            .get<Publisher[]>(`http://localhost:5003/publisher/`)
+            .forEach((data) => {
+                publishers = data;
+            });
+
+        return publishers;
     }
 }

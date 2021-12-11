@@ -15,11 +15,11 @@ import { PublisherModule } from "./domains/publisher/publisher.module";
               '.env.development.local'
           ]
       }),
-  ],
-  controllers: [
-      AppController,
       ArticleModule,
       PublisherModule
+  ],
+  controllers: [
+      AppController
   ],
   providers: [AppService],
 })
