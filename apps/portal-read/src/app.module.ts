@@ -7,10 +7,11 @@ import { AppService } from './app.service';
   imports: [
       ConfigModule.forRoot({
           envFilePath: [
+              '.env',
               '.env.development',
               '.env.development.local'
           ]
-      })
+      }),
   ],
   controllers: [AppController],
   providers: [AppService],

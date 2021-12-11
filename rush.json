@@ -450,6 +450,11 @@
             "reviewCategory": "api"
         },
         {
+            "packageName": "@communication/dto",
+            "projectFolder": "libs/dto",
+            "reviewCategory": "libs"
+        },
+        {
             "packageName": "@communication/types",
             "projectFolder": "tools/types",
             "reviewCategory": "tools"

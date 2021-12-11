@@ -1,6 +1,6 @@
 {
   "name": "@communication/portal-database",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Database API for communication",
   "author": "Danyil Orel",
   "private": true,
@@ -21,18 +21,18 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@communication/dto": "1.0.0",
+    "@hapi/joi": "~17.1.1",
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/config": "~1.1.5",
     "@nestjs/mongoose": "~9.0.1",
     "@nestjs/platform-express": "^8.0.0",
-    "class-validator": "~0.13.2",
+    "class-transformer": "~0.5.1",
     "mongoose": "~6.0.14",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0",
-    "@hapi/joi": "~17.1.1",
-    "class-transformer": "~0.5.1"
+    "rxjs": "^7.2.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",

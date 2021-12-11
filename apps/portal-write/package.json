@@ -1,6 +1,6 @@
 {
   "name": "@communication/portal-write",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "API for write operations",
   "author": "Danyil Orel",
   "private": true,
