@@ -3,6 +3,9 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+import { ArticleModule } from './domains/article/article.module';
+import { PublisherModule } from "./domains/publisher/publisher.module";
+
 @Module({
   imports: [
       ConfigModule.forRoot({
@@ -13,7 +16,11 @@ import { AppService } from './app.service';
           ]
       }),
   ],
-  controllers: [AppController],
+  controllers: [
+      AppController,
+      ArticleModule,
+      PublisherModule
+  ],
   providers: [AppService],
 })
 export class AppModule {}

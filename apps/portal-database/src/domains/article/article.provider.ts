@@ -1,6 +1,6 @@
 import { Connection } from 'mongoose';
-import { ArticleSchema } from './article.schema';
-import { ARTICLE, ARTICLE_MODEL, DATABASE_CONNECTION } from "../database.constants";
+import { ArticleSchema, ARTICLE, ARTICLE_MODEL } from '@communication/schema';
+import { DATABASE_CONNECTION } from "../database.constants";
 
 export const articleProvider = [
     {

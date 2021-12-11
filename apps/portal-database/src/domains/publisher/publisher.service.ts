@@ -1,8 +1,7 @@
 import { Model } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
 import { PublisherCreateDto, PublisherUpdateDto } from "@communication/dto";
-import { Publisher } from "./publisher.schema";
-import { PUBLISHER_MODEL } from "../database.constants";
+import { Publisher, PUBLISHER_MODEL } from "@communication/schema";
 
 @Injectable()
 export class PublisherService {

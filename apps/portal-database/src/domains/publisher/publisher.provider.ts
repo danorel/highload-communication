@@ -1,6 +1,6 @@
 import { Connection } from 'mongoose';
-import { PublisherSchema } from './publisher.schema';
-import { DATABASE_CONNECTION, PUBLISHER, PUBLISHER_MODEL } from "../database.constants";
+import { PublisherSchema, PUBLISHER, PUBLISHER_MODEL } from '@communication/schema';
+import { DATABASE_CONNECTION } from "../database.constants";
 
 export const publisherProvider = [
     {

@@ -1,7 +1,7 @@
 import { Body, Controller, Param, Delete, Get, Post, Put } from '@nestjs/common';
 import { PublisherCreateDto, PublisherUpdateDto } from "@communication/dto";
+import { Publisher } from "@communication/schema";
 import { PublisherService } from "./publisher.service";
-import { Publisher } from "./publisher.schema";
 
 @Controller('publisher')
 export class PublisherController {

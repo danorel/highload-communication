@@ -455,6 +455,11 @@
             "reviewCategory": "libs"
         },
         {
+            "packageName": "@communication/schema",
+            "projectFolder": "libs/schema",
+            "reviewCategory": "libs"
+        },
+        {
             "packageName": "@communication/types",
             "projectFolder": "tools/types",
             "reviewCategory": "tools"

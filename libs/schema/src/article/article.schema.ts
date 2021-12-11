@@ -1,8 +1,7 @@
 import { Document, Schema } from 'mongoose';
 import { Prop, Schema as NestSchema, SchemaFactory } from "@nestjs/mongoose";
-import { Publisher } from "../publisher/publisher.schema";
-import { PUBLISHER } from "../database.constants";
-import { Tracker } from "../tracker/tracker.schema";
+import { Publisher, PUBLISHER } from "../publisher";
+import { Tracker } from "../tracker";
 
 export type ArticleDocument = Article & Document;
 

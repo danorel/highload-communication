@@ -4,12 +4,12 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import { ArticleModule } from "./database/article/article.module";
-import { PublisherModule } from "./database/publisher/publisher.module";
+import { ArticleModule } from "./domains/article/article.module";
+import { PublisherModule } from "./domains/publisher/publisher.module";
 
 import { MongoModule } from "./config/mongo/mongo.module";
 import { ApplicationModule } from "./config/application/application.module";
-import { DatabaseModule } from "./database/database.module";
+import { DatabaseModule } from "./domains/database.module";
 
 @Module({
   imports: [
