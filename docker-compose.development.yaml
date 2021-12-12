@@ -43,6 +43,20 @@ services:
             - ./storage/redis/log:/var/log/redis
         command: redis-server
 
+    redis-commander:
+        container_name: redis-commander
+        hostname: redis-commander
+        image: rediscommander/redis-commander:latest
+        restart: always
+        depends_on:
+            - redis
+        environment:
+            - PORT=${REDIS_COMMANDER_PORT}
+            - READ_ONLY=true
+            - REDIS_HOSTS=local:redis:${REDIS_PORT}
+        ports:
+            - ${REDIS_COMMANDER_PORT}:${REDIS_COMMANDER_PORT}
+
     rabbitmq:
         image: rabbitmq:3-management-alpine
         container_name: rabbitmq
