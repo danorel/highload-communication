@@ -18,9 +18,7 @@ import { PublisherModule } from "./domains/publisher/publisher.module";
       ArticleModule,
       PublisherModule
   ],
-  controllers: [
-      AppController
-  ],
-  providers: [AppService],
+  controllers: [AppController],
+  providers: [AppService]
 })
 export class AppModule {}
