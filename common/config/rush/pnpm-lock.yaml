@@ -134,6 +134,7 @@ importers:
   ../../apps/portal-write:
     specifiers:
       '@communication/api-utils': workspace:^1.0.0
+      '@communication/caching': workspace:^1.0.0
       '@communication/dto': workspace:^1.0.0
       '@communication/schema': workspace:^1.0.0
       '@nestjs/cli': ^8.0.0
@@ -162,6 +163,7 @@ importers:
       typescript: ^4.3.5
     dependencies:
       '@communication/api-utils': link:../../libs/api-utils
+      '@communication/caching': link:../../libs/caching
       '@communication/dto': link:../../libs/dto
       '@communication/schema': link:../../libs/schema
       '@nestjs/common': 8.2.3_ad16f1f28877c5242670873e13562245
@@ -1314,7 +1316,7 @@ packages:
       '@nestjs/websockets':
         optional: true
     dependencies:
-      '@nestjs/common': 8.2.3_1cd5a463f38d4784b622d99381efc9a0
+      '@nestjs/common': 8.2.3_ad16f1f28877c5242670873e13562245
       '@nestjs/platform-express': 8.2.3_4e195730d90113ce1578bd999274c7a8
       '@nuxtjs/opencollective': 0.3.2
       fast-safe-stringify: 2.1.1
@@ -1349,7 +1351,7 @@ packages:
       '@nestjs/common': ^8.0.0
       '@nestjs/core': ^8.0.0
     dependencies:
-      '@nestjs/common': 8.2.3_1cd5a463f38d4784b622d99381efc9a0
+      '@nestjs/common': 8.2.3_ad16f1f28877c5242670873e13562245
       '@nestjs/core': 8.2.3_1864eb04cdb557d7ef263925d28b0dee
       body-parser: 1.19.0
       cors: 2.8.5

@@ -16,4 +16,8 @@ export class CachingService implements CachingInterface {
     ): Promise<WriteValue> {
         return this.service.set<WriteValue>(key, value);
     }
+
+    async invalidate<DeleteValue = unknown>(key: string): Promise<DeleteValue> {
+        return this.service.invalidate(key);
+    }
 }

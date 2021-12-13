@@ -19,4 +19,8 @@ export class RedisService implements CachingInterface {
     ): Promise<WriteValue> {
         return this.cachingManager.set<WriteValue>(key, value, { ttl: 300 });
     }
+
+    async invalidate<DeleteValue = unknown>(key: string): Promise<DeleteValue> {
+        return this.cachingManager.del(key);
+    }
 }

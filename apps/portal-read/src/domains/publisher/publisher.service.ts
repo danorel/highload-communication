@@ -1,8 +1,8 @@
-import { lastValueFrom } from 'rxjs';
 import { Injectable } from '@nestjs/common';
 import { RequestsService } from '@communication/api-utils';
 import { CachingService } from '@communication/caching';
 import { Publisher } from '@communication/schema';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class PublisherService {

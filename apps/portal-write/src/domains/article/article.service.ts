@@ -1,51 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { RequestsService } from '@communication/api-utils';
+import { CachingService } from '@communication/caching';
 import { ArticleCreateDto, ArticleUpdateDto } from '@communication/dto';
 import { Article } from '@communication/schema';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class ArticleService {
-    constructor(private requestsService: RequestsService) {}
+    constructor(
+        private readonly requestsService: RequestsService,
+        private readonly cachingService: CachingService
+    ) {}
 
     async create(createDto: ArticleCreateDto): Promise<Article> {
-        let article: Article;
-
-        await this.requestsService
-            .post<Article, ArticleCreateDto>(
+        return await lastValueFrom(
+            this.requestsService.post<Article, ArticleCreateDto>(
                 `http://localhost:5003/article/`,
                 createDto
             )
-            .subscribe((data) => {
-                article = data;
-            });
-
-        return article;
+        );
     }
 
     async update(id: string, updateDto: ArticleUpdateDto): Promise<Article> {
-        let article: Article;
+        await this.cachingService.invalidate<Article>(id);
 
-        await this.requestsService
-            .put<Article, ArticleUpdateDto>(
+        return await lastValueFrom(
+            this.requestsService.put<Article, ArticleUpdateDto>(
                 `http://localhost:5003/article/${id}`,
                 updateDto
             )
-            .subscribe((data) => {
-                article = data;
-            });
-
-        return article;
+        );
     }
 
     async delete(id: string): Promise<Article> {
-        let article: Article;
+        await this.cachingService.invalidate<Article>(id);
 
-        await this.requestsService
-            .delete<Article>(`http://localhost:5003/article/${id}`)
-            .subscribe((data) => {
-                article = data;
-            });
-
-        return article;
+        return await lastValueFrom(
+            this.requestsService.delete<Article>(
+                `http://localhost:5003/article/${id}`
+            )
+        );
     }
 }
