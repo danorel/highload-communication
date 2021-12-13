@@ -207,7 +207,7 @@
       "summary": "Format files staged for commit.",
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-format",
-      "shellCommand": "git-format-staged -f 'prettier --ignore-unknown --stdin-filepath \"{}\"' '*'"
+      "shellCommand": "git-format-staged -f 'prettier --ignore-unknown' '*'"
     }
   ],
 

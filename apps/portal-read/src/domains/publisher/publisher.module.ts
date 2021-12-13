@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { RequestsModule, RequestsService } from '@communication/api-utils';
+import { RequestsModule } from '@communication/api-utils';
+import { CachingModule } from '@communication/caching';
 import { PublisherController } from './publisher.controller';
 import { PublisherService } from './publisher.service';
-import { CachingModule } from '../../caching/caching.module';
 
 @Module({
     imports: [RequestsModule, CachingModule],
     controllers: [PublisherController],
-    providers: [PublisherService, RequestsService]
+    providers: [PublisherService]
 })
 export class PublisherModule {}

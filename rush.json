@@ -448,6 +448,11 @@
             "reviewCategory": "libs"
         },
         {
+            "packageName": "@communication/caching",
+            "projectFolder": "libs/caching",
+            "reviewCategory": "libs"
+        },
+        {
             "packageName": "@communication/dto",
             "projectFolder": "libs/dto",
             "reviewCategory": "libs"
