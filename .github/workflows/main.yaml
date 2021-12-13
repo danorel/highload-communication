@@ -1,0 +1,56 @@
+name: CI
+on: push
+jobs:
+    build:
+        name: Build application
+        runs-on: ubuntu-20.04
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - name: Check for missing change logs
+              run: node common/scripts/install-run-rush.js change -v
+            - name: Check files formatting
+              run: node common/scripts/install-run-rush.js format --check
+            - name: Prepare packages
+              uses: ./.github/actions/package-prepare
+            - name: Lint code
+              run: node common/scripts/install-run-rush.js lint
+            - name: Build packages
+              run: node common/scripts/install-run-rush.js rebuild --verbose
+            - name: Unit tests
+              run: node common/scripts/install-run-rush.js test
+    bundle:
+        name: Bundle application
+        needs: build
+        runs-on: ubuntu-20.04
+        outputs:
+            projects: ${{ steps.projects.outputs.value }}
+            git-head-ref: ${{ steps.git-head-ref.outputs.value }}
+        steps:
+            - name: Setup git identity
+              if: github.ref == 'refs/heads/main'
+              run: |
+                  git config --global user.name 'github-actions[bot]'
+                  git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+              shell: bash
+            - name: Checkout code
+              if: github.ref == 'refs/heads/main'
+              uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - name: Prepare packages
+              if: github.ref == 'refs/heads/main'
+              uses: ./.github/actions/package-prepare
+            - name: Bump versions
+              if: github.ref == 'refs/heads/main'
+              run: node common/scripts/install-run-rush.js version --bump --target-branch ${GITHUB_REF#refs/heads/}
+            - name: Set projects metadata
+              id: projects
+              if: github.ref == 'refs/heads/main'
+              run: echo "::set-output name=value::$(node common/scripts/install-run-rush.js list --json | sed -r '1,/^-{2,}$/d' | jq -cM .projects)"
+            - name: Set git HEAD ref
+              id: git-head-ref
+              if: github.ref == 'refs/heads/main'
+              run: echo "::set-output name=value::$(git rev-parse HEAD)"

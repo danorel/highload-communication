@@ -1,0 +1,18 @@
+name: "Prepare packages"
+description: "Packages preparation with minimal Node.js requirements and modules"
+runs:
+    using: "composite"
+    steps:
+        - name: Install Node.js
+          uses: actions/setup-node@v2
+          with:
+              node-version: '16.13.0'
+        - name: Cache packages
+          uses: actions/cache@v2
+          id: rush-temp-cache
+          with:
+              path: common/temp/pnpm-store
+              key: ${{ hashFiles('common/config/rush/pnpm-lock.yaml') }}
+        - name: Install dependencies
+          run: node common/scripts/install-run-rush.js install
+          shell: bash

@@ -11,6 +11,7 @@ Required plan:
 - [ ] Implement write API with message queue. (Using RPC pattern)
 - [ ] Implement request imitator.
 - [ ] Test/deploy application.
+- [x] Add CI: Github Actions.
 
 Optional plan:
 - [ ] Migrate from docker-compose to kubernetes.
