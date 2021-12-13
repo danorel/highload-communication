@@ -26,13 +26,12 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^4.28.2
   '@typescript-eslint/parser': ^4.28.2
   cache-manager: ~3.6.0
+  cache-manager-redis-store: ~2.0.0
   class-transformer: ~0.5.1
   class-validator: ~0.13.2
   eslint: ^7.30.0
-  eslint-config-prettier: ^8.3.0
-  eslint-plugin-prettier: ^3.4.0
   jest: ^27.0.6
-  prettier: ^2.3.2
+  mongoose: ~6.1.1
   reflect-metadata: ^0.1.13
   rimraf: ^3.0.2
   rxjs: ^7.2.0
@@ -50,7 +49,7 @@ dependencies:
   '@nestjs/common': 8.2.3_ca260b170963d2e65691dcb4611ec7fd
   '@nestjs/config': 1.1.5_4067a5d44d4606b10b1aff77c2f9d3cd
   '@nestjs/core': 8.2.3_1864eb04cdb557d7ef263925d28b0dee
-  '@nestjs/mongoose': 9.0.1_9516583cf3a5954b4b012ec1f447a027
+  '@nestjs/mongoose': 9.0.1_5c23bb23d85d02a34ac5e838d6cddb3f
   '@nestjs/platform-express': 8.2.3_4e195730d90113ce1578bd999274c7a8
   '@nestjs/schematics': 8.0.5_typescript@4.5.2
   '@nestjs/testing': 8.2.3_51e6544c14e6c411f90104b32018d9ce
@@ -69,13 +68,12 @@ dependencies:
   '@typescript-eslint/eslint-plugin': 4.33.0_d00b196ac5df1286ea7e45797bebddbc
   '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.2
   cache-manager: 3.6.0
+  cache-manager-redis-store: 2.0.0
   class-transformer: 0.5.1
   class-validator: 0.13.2
   eslint: 7.32.0
-  eslint-config-prettier: 8.3.0_eslint@7.32.0
-  eslint-plugin-prettier: 3.4.1_6e6a25a49a944db0fa38418c3ba4bc86
   jest: 27.4.3_ts-node@10.4.0
-  prettier: 2.5.1
+  mongoose: 6.1.1
   reflect-metadata: 0.1.13
   rimraf: 3.0.2
   rxjs: 7.4.0
@@ -960,22 +958,6 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /@nestjs/mongoose/9.0.1_0d0154760d43fc67f3da01f135df4622:
-    resolution: {integrity: sha512-TITKt5Q+k7PU5OmRcvQqqTdjBpAToFkP6LoLZ4n2DGm4jHh9iqX3Rkm8e7Ytwb5iWqGAAn1txcYJP8XO/H9Ixg==}
-    peerDependencies:
-      '@nestjs/common': ^6.0.0 || ^7.0.0 || ^8.0.0
-      '@nestjs/core': ^6.0.0 || ^7.0.0 || ^8.0.0
-      mongoose: ^6.0.2
-      reflect-metadata: ^0.1.12
-      rxjs: ^6.0.0 || ^7.0.0
-    dependencies:
-      '@nestjs/common': 8.2.3_ca260b170963d2e65691dcb4611ec7fd
-      '@nestjs/core': 8.2.3_1864eb04cdb557d7ef263925d28b0dee
-      mongoose: 6.0.14
-      reflect-metadata: 0.1.13
-      rxjs: 7.4.0
-    dev: false
-
   /@nestjs/mongoose/9.0.1_5c23bb23d85d02a34ac5e838d6cddb3f:
     resolution: {integrity: sha512-TITKt5Q+k7PU5OmRcvQqqTdjBpAToFkP6LoLZ4n2DGm4jHh9iqX3Rkm8e7Ytwb5iWqGAAn1txcYJP8XO/H9Ixg==}
     peerDependencies:
@@ -988,21 +970,6 @@ packages:
       '@nestjs/common': 8.2.3_ca260b170963d2e65691dcb4611ec7fd
       '@nestjs/core': 8.2.3_1864eb04cdb557d7ef263925d28b0dee
       mongoose: 6.1.1
-      reflect-metadata: 0.1.13
-      rxjs: 7.4.0
-    dev: false
-
-  /@nestjs/mongoose/9.0.1_9516583cf3a5954b4b012ec1f447a027:
-    resolution: {integrity: sha512-TITKt5Q+k7PU5OmRcvQqqTdjBpAToFkP6LoLZ4n2DGm4jHh9iqX3Rkm8e7Ytwb5iWqGAAn1txcYJP8XO/H9Ixg==}
-    peerDependencies:
-      '@nestjs/common': ^6.0.0 || ^7.0.0 || ^8.0.0
-      '@nestjs/core': ^6.0.0 || ^7.0.0 || ^8.0.0
-      mongoose: ^6.0.2
-      reflect-metadata: ^0.1.12
-      rxjs: ^6.0.0 || ^7.0.0
-    dependencies:
-      '@nestjs/common': 8.2.3_ca260b170963d2e65691dcb4611ec7fd
-      '@nestjs/core': 8.2.3_1864eb04cdb557d7ef263925d28b0dee
       reflect-metadata: 0.1.13
       rxjs: 7.4.0
     dev: false
@@ -4290,17 +4257,6 @@ packages:
       whatwg-url: 11.0.0
     dev: false
 
-  /mongodb/4.1.4:
-    resolution: {integrity: sha512-Cv/sk8on/tpvvqbEvR1h03mdyNdyvvO+WhtFlL4jrZ+DSsN/oSQHVqmJQI/sBCqqbOArFcYCAYDfyzqFwV4GSQ==}
-    engines: {node: '>=12.9.0'}
-    dependencies:
-      bson: 4.6.0
-      denque: 2.0.1
-      mongodb-connection-string-url: 2.2.0
-    optionalDependencies:
-      saslprep: 1.0.3
-    dev: false
-
   /mongodb/4.2.1:
     resolution: {integrity: sha512-nDC+ulM/Ea3Q2VG5eemuGfB7T4ORwrtKegH2XW9OLlUBgQF6OTNrzFCS1Z3SJGVA+T0Sr1xBYV6DMnp0A7us0g==}
     engines: {node: '>=12.9.0'}
@@ -4310,23 +4266,6 @@ packages:
       mongodb-connection-string-url: 2.2.0
     optionalDependencies:
       saslprep: 1.0.3
-    dev: false
-
-  /mongoose/6.0.14:
-    resolution: {integrity: sha512-SZ0kBlHrz/G70yWdVXLfM/gH4NsY85+as4MZRdtWxBTDEcmoE3rCFAz1/Ho2ycg5mJAeOBwdGZw4a5sn/WrwUA==}
-    engines: {node: '>=12.0.0'}
-    dependencies:
-      bson: 4.6.0
-      kareem: 2.3.2
-      mongodb: 4.1.4
-      mpath: 0.8.4
-      mquery: 4.0.0
-      ms: 2.1.2
-      regexp-clone: 1.0.0
-      sift: 13.5.2
-      sliced: 1.0.1
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /mongoose/6.1.1:
@@ -5903,7 +5842,7 @@ packages:
     dev: false
 
   file:projects/api-utils.tgz_b75187073ba8cfcbdcbbb079e4fe7a6b:
-    resolution: {integrity: sha512-OFB2w9nKfYub7hHYh9BaZW/V695ssiyEyOYsD4FQ1Ryeca21GrxBLNuqG+S2HM7ZRKbbf3z1pmtgoj9fWUhYaQ==, tarball: file:projects/api-utils.tgz}
+    resolution: {integrity: sha512-kOo9e/vqAusqfkeOA5TdAw1B8Q5sN+F+RuZJhb1xgNB+jR8q3D3XukXuG5xSy+Gb4dSwmf3N5whlzc9pUgxBwQ==, tarball: file:projects/api-utils.tgz}
     id: file:projects/api-utils.tgz
     name: '@rush-temp/api-utils'
     version: 0.0.0
@@ -5960,7 +5899,7 @@ packages:
     dev: false
 
   file:projects/dto.tgz_13b7855b5762c45a643e0fe8806e3e20:
-    resolution: {integrity: sha512-zuKRbL6qQmu/ji6aFsqjQXtDj1YGlYjzXb7bGqeyiefoMtqsDX1CbyenqXvWZm3bHM/BR3ombjx4DV2qjrTsqg==, tarball: file:projects/dto.tgz}
+    resolution: {integrity: sha512-v9tH3lo03daTrzoZN8IkilX+ncEaA+wPhoS2fl5IBrtjRU5AKMP541FXgjcjamp6wUczfqUroSegTp5aO2YXVw==, tarball: file:projects/dto.tgz}
     id: file:projects/dto.tgz
     name: '@rush-temp/dto'
     version: 0.0.0
@@ -6004,7 +5943,7 @@ packages:
     dev: false
 
   file:projects/portal-database.tgz_cc56a30a6740fddc059a1a991aa37893:
-    resolution: {integrity: sha512-iW5uNkdNM7WFGqTEKLlum20HMOI3F0G21o3LRT4hzPE0WS5Bil8mGoHrjABXnXGkzWZSUM6NHoTX51rrC69U/Q==, tarball: file:projects/portal-database.tgz}
+    resolution: {integrity: sha512-yDGHZEAn/DzZyDIFY2Wa1Dxo/thvUDaiR9XWK+Jsnst/C1B+OfqIl1SMUhqxw2NcQ2NcFcc9Piph0DdtFQFEaQ==, tarball: file:projects/portal-database.tgz}
     id: file:projects/portal-database.tgz
     name: '@rush-temp/portal-database'
     version: 0.0.0
@@ -6014,7 +5953,7 @@ packages:
       '@nestjs/common': 8.2.3_ca260b170963d2e65691dcb4611ec7fd
       '@nestjs/config': 1.1.5_4067a5d44d4606b10b1aff77c2f9d3cd
       '@nestjs/core': 8.2.3_1864eb04cdb557d7ef263925d28b0dee
-      '@nestjs/mongoose': 9.0.1_0d0154760d43fc67f3da01f135df4622
+      '@nestjs/mongoose': 9.0.1_5c23bb23d85d02a34ac5e838d6cddb3f
       '@nestjs/platform-express': 8.2.3_4e195730d90113ce1578bd999274c7a8
       '@nestjs/schematics': 8.0.5_typescript@4.5.2
       '@nestjs/testing': 8.2.3_51e6544c14e6c411f90104b32018d9ce
@@ -6029,7 +5968,7 @@ packages:
       eslint-config-prettier: 8.3.0_eslint@7.32.0
       eslint-plugin-prettier: 3.4.1_6e6a25a49a944db0fa38418c3ba4bc86
       jest: 27.4.3_ts-node@10.4.0
-      mongoose: 6.0.14
+      mongoose: 6.1.1
       prettier: 2.5.1
       reflect-metadata: 0.1.13
       rimraf: 3.0.2
@@ -6064,7 +6003,7 @@ packages:
     dev: false
 
   file:projects/portal-read.tgz_279461c9b8c03a205cdbc4878bc60cf8:
-    resolution: {integrity: sha512-Uab5fI/3xadE20tbdLiuT4eaT2KLJq1XRR3DZXXnUVRY3buyfi4GIdWzXLsXiCVCAJid/PazSStXKCLK4X14xQ==, tarball: file:projects/portal-read.tgz}
+    resolution: {integrity: sha512-zD1BP3Injcy8VZXAG/N6gI7cJJZ1SHn4+Ga25jOMCK1cIRbHvqVl7ExTxyoAfMc8VFY1DATMOdRsqyQNgYiWRA==, tarball: file:projects/portal-read.tgz}
     id: file:projects/portal-read.tgz
     name: '@rush-temp/portal-read'
     version: 0.0.0
@@ -6123,7 +6062,7 @@ packages:
     dev: false
 
   file:projects/portal-write.tgz_b75187073ba8cfcbdcbbb079e4fe7a6b:
-    resolution: {integrity: sha512-ioP+b+UTYUFfE/GKQArjuoLzukVcvk+TXBasIlmcFHV0flLyI9Rz3MyGXcTYXaMH4i7TTKLprYErdioHv8f4tA==, tarball: file:projects/portal-write.tgz}
+    resolution: {integrity: sha512-MTn6NY9V27+ps+nBbgBKjaHRPnply/0RQREPV60sVVmbWmJeUUCBw7yaNi1tk6F30aKB59YAgFe8S2iBRxz08A==, tarball: file:projects/portal-write.tgz}
     id: file:projects/portal-write.tgz
     name: '@rush-temp/portal-write'
     version: 0.0.0
@@ -6180,7 +6119,7 @@ packages:
     dev: false
 
   file:projects/schema.tgz_b75187073ba8cfcbdcbbb079e4fe7a6b:
-    resolution: {integrity: sha512-bEjiB/vZgfcMVF5TsRaKEWoZpQtBYvcJtYwYv1dKI4SjsA7ZvWaVypVT5UnfaJe3cOTLLEiP3juAYYhu29NDag==, tarball: file:projects/schema.tgz}
+    resolution: {integrity: sha512-qN+v1puiah1YmXkIaTfkybVIq0S7EXrViQKUCmuej+rDHpdt87hirhK4B4HaSI4HLcv5DdillhuorIBMl4gLqA==, tarball: file:projects/schema.tgz}
     id: file:projects/schema.tgz
     name: '@rush-temp/schema'
     version: 0.0.0
