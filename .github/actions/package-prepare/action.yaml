@@ -1,7 +1,7 @@
-name: "Prepare packages"
-description: "Packages preparation with minimal Node.js requirements and modules"
+name: 'Prepare packages'
+description: 'Packages preparation with minimal Node.js requirements and modules'
 runs:
-    using: "composite"
+    using: 'composite'
     steps:
         - name: Install Node.js
           uses: actions/setup-node@v2

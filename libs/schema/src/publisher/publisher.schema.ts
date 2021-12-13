@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
-import { Prop, Schema as NestSchema, SchemaFactory } from "@nestjs/mongoose";
-import { Tracker } from "../tracker";
+import { Prop, Schema as NestSchema, SchemaFactory } from '@nestjs/mongoose';
+import { Tracker } from '../tracker';
 
 export type PublisherDocument = Publisher & Document;
 

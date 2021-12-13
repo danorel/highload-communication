@@ -2,7 +2,7 @@ import * as Joi from '@hapi/joi';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ApplicationService } from './application.service';
-import { MongoModule } from "../mongo/mongo.module";
+import { MongoModule } from '../mongo/mongo.module';
 import configuration from './application.configuration';
 /**
  * Import and provide app configuration related classes.
@@ -22,6 +22,6 @@ import configuration from './application.configuration';
         MongoModule
     ],
     providers: [ConfigService, ApplicationService],
-    exports: [ConfigService, ApplicationService],
+    exports: [ConfigService, ApplicationService]
 })
 export class ApplicationModule {}

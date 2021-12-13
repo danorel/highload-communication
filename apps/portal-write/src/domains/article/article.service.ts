@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { RequestsService } from "@communication/api-utils";
-import { ArticleCreateDto, ArticleUpdateDto } from "@communication/dto";
-import { Article } from "@communication/schema";
+import { RequestsService } from '@communication/api-utils';
+import { ArticleCreateDto, ArticleUpdateDto } from '@communication/dto';
+import { Article } from '@communication/schema';
 
 @Injectable()
 export class ArticleService {
@@ -11,7 +11,10 @@ export class ArticleService {
         let article: Article;
 
         await this.requestsService
-            .post<Article, ArticleCreateDto>(`http://localhost:5003/article/`, createDto)
+            .post<Article, ArticleCreateDto>(
+                `http://localhost:5003/article/`,
+                createDto
+            )
             .subscribe((data) => {
                 article = data;
             });
@@ -23,7 +26,10 @@ export class ArticleService {
         let article: Article;
 
         await this.requestsService
-            .put<Article, ArticleUpdateDto>(`http://localhost:5003/article/${id}`, updateDto)
+            .put<Article, ArticleUpdateDto>(
+                `http://localhost:5003/article/${id}`,
+                updateDto
+            )
             .subscribe((data) => {
                 article = data;
             });

@@ -3,21 +3,18 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import { ArticleModule } from "./domains/article/article.module";
-import { PublisherModule } from "./domains/publisher/publisher.module";
+import { ArticleModule } from './domains/article/article.module';
+import { PublisherModule } from './domains/publisher/publisher.module';
 
 @Module({
-  imports: [
-      ConfigModule.forRoot({
-          envFilePath: [
-              '.env.development',
-              '.env.development.local'
-          ]
-      }),
-      ArticleModule,
-      PublisherModule
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [
+        ConfigModule.forRoot({
+            envFilePath: ['.env.development', '.env.development.local']
+        }),
+        ArticleModule,
+        PublisherModule
+    ],
+    controllers: [AppController],
+    providers: [AppService]
 })
 export class AppModule {}

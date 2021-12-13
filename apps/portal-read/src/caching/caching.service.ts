@@ -1,6 +1,6 @@
-import { Injectable } from "@nestjs/common";
-import { RedisService } from "./redis/redis.service";
-import { CachingInterface } from "./caching.interface";
+import { Injectable } from '@nestjs/common';
+import { RedisService } from './redis/redis.service';
+import { CachingInterface } from './caching.interface';
 
 @Injectable()
 export class CachingService implements CachingInterface {
@@ -10,7 +10,10 @@ export class CachingService implements CachingInterface {
         return this.service.get<ReadValue>(key);
     }
 
-    async set<WriteValue = unknown>(key: string, value: WriteValue): Promise<WriteValue> {
+    async set<WriteValue = unknown>(
+        key: string,
+        value: WriteValue
+    ): Promise<WriteValue> {
         return this.service.set<WriteValue>(key, value);
     }
 }

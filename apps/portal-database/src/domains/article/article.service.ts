@@ -1,13 +1,13 @@
 import { Model } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
-import { ArticleCreateDto, ArticleUpdateDto } from "@communication/dto";
+import { ArticleCreateDto, ArticleUpdateDto } from '@communication/dto';
 import { Article, ARTICLE_MODEL } from '@communication/schema';
 
 @Injectable()
 export class ArticleService {
     constructor(
         @Inject(ARTICLE_MODEL)
-        private model: Model<Article>,
+        private model: Model<Article>
     ) {}
 
     async findOne(id: string): Promise<Article> {
@@ -23,15 +23,17 @@ export class ArticleService {
         return new this.model({
             ...createDto,
             createdAt: date,
-            completedAt: date,
+            completedAt: date
         }).save();
     }
 
     async update(id: string, updateDto: ArticleUpdateDto): Promise<Article> {
-        return this.model.findByIdAndUpdate(id, {
-            ...updateDto,
-            completedAt: new Date()
-        }).exec();
+        return this.model
+            .findByIdAndUpdate(id, {
+                ...updateDto,
+                completedAt: new Date()
+            })
+            .exec();
     }
 
     async delete(id: string): Promise<Article> {

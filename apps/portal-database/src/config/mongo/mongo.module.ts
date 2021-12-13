@@ -16,13 +16,12 @@ import configuration from './mongo.configuration';
                 MONGO_HOST: Joi.string()
                     .valid('localhost', 'mongo')
                     .default('localhost'),
-                MONGO_PORT: Joi.number()
-                    .default(27017),
+                MONGO_PORT: Joi.number().default(27017),
                 MONGO_DATABASE: Joi.string()
             })
-        }),
+        })
     ],
     providers: [ConfigService, MongoService],
-    exports: [ConfigService, MongoService],
+    exports: [ConfigService, MongoService]
 })
 export class MongoModule {}

@@ -1,6 +1,6 @@
 import { Controller, Param, Get } from '@nestjs/common';
-import { Article } from "@communication/schema";
-import { ArticleService } from "./article.service";
+import { Article } from '@communication/schema';
+import { ArticleService } from './article.service';
 
 @Controller('article')
 export class ArticleController {

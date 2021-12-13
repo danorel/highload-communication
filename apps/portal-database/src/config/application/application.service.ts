@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { MongoService } from "../mongo/mongo.service";
+import { MongoService } from '../mongo/mongo.service';
 
 /**
  * Service dealing with mongo config based operations.
@@ -26,7 +26,7 @@ export class ApplicationService {
             case 'development':
                 return `mongodb://${this.mongoService.host}:${this.mongoService.port}/${this.mongoService.database}`;
             default:
-                return "";
+                return '';
         }
     }
 }

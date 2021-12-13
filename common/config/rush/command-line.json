@@ -173,6 +173,41 @@
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-select",
       "shellCommand": "rush-select -i test -i test:e2e -i test:cov -i test:watch -i test:debug -i start -i start:dev -i start:debug -i build:watch"
+    },
+    {
+      "name": "test",
+      "commandKind": "bulk",
+      "summary": "Test code in all projects.",
+      "safeForSimultaneousRushProcesses": true,
+      "allowWarningsInSuccessfulBuild": true,
+      "enableParallelism": false,
+      "ignoreMissingScript": true,
+      "incremental": true
+    },
+    {
+      "name": "lint",
+      "commandKind": "bulk",
+      "summary": "Lint code in all projects.",
+      "safeForSimultaneousRushProcesses": true,
+      "enableParallelism": false,
+      "ignoreMissingScript": true,
+      "incremental": true
+    },
+    {
+      "name": "format",
+      "commandKind": "global",
+      "summary": "Format or check files formatting.",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-format",
+      "shellCommand": "prettier ."
+    },
+    {
+      "name": "format-staged",
+      "commandKind": "global",
+      "summary": "Format files staged for commit.",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-format",
+      "shellCommand": "git-format-staged -f 'prettier --ignore-unknown --stdin-filepath \"{}\"' '*'"
     }
   ],
 
@@ -301,5 +336,29 @@
     //     }
     //   ]
     // }
+    {
+      "parameterKind": "flag",
+      "longName": "--fix",
+      "description": "Automatically fix problems.",
+      "associatedCommands": ["lint"]
+    },
+    {
+      "parameterKind": "flag",
+      "longName": "--quiet",
+      "description": "Show only errors.",
+      "associatedCommands": ["lint"]
+    },
+    {
+      "parameterKind": "flag",
+      "longName": "--check",
+      "description": "Check files formatting.",
+      "associatedCommands": ["format"]
+    },
+    {
+      "parameterKind": "flag",
+      "longName": "--write",
+      "description": "Format files in-place.",
+      "associatedCommands": ["format"]
+    }
   ]
 }

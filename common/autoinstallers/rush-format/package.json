@@ -1,0 +1,9 @@
+{
+    "name": "rush-format",
+    "version": "1.0.0",
+    "private": true,
+    "dependencies": {
+        "git-format-staged": "^2.1.2",
+        "prettier": "^2.5.1"
+    }
+}

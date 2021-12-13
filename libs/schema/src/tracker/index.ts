@@ -1,1 +1,1 @@
-export * from "./tracker.schema";
+export * from './tracker.schema';

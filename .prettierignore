@@ -1,0 +1,26 @@
+# Package manager files
+pnpm-lock.yaml
+package-lock.json
+shrinkwrap.json
+
+# Common toolchain intermediate files
+dist
+lib
+build
+temp
+
+# Generated artefacts
+__generated__
+
+# Rush files
+common/deploy/
+common/temp/
+common/autoinstallers/*/.npmrc
+common/changes/
+common/scripts/
+common/config/
+**/.rush/temp/
+CHANGELOG.*
+
+# Prettier reformats code blocks inside Markdown, which affects rendered output
+*.md

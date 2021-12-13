@@ -1,8 +1,8 @@
-import { lastValueFrom } from "rxjs";
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from '@nestjs/common';
-import { RequestsService } from "@communication/api-utils";
-import { Article } from "@communication/schema";
-import { CachingService } from "../../caching/caching.service";
+import { RequestsService } from '@communication/api-utils';
+import { Article } from '@communication/schema';
+import { CachingService } from '../../caching/caching.service';
 
 @Injectable()
 export class ArticleService {
@@ -15,8 +15,10 @@ export class ArticleService {
         let article = await this.cachingService.get<Article>(id);
 
         if (!article) {
-            article = await lastValueFrom(this.requestsService
-                .get<Article>(`http://localhost:5003/article/${id}`)
+            article = await lastValueFrom(
+                this.requestsService.get<Article>(
+                    `http://localhost:5003/article/${id}`
+                )
             );
 
             await this.cachingService.set<Article>(id, article);

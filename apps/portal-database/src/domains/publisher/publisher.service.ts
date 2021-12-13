@@ -1,13 +1,13 @@
 import { Model } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
-import { PublisherCreateDto, PublisherUpdateDto } from "@communication/dto";
-import { Publisher, PUBLISHER_MODEL } from "@communication/schema";
+import { PublisherCreateDto, PublisherUpdateDto } from '@communication/dto';
+import { Publisher, PUBLISHER_MODEL } from '@communication/schema';
 
 @Injectable()
 export class PublisherService {
     constructor(
         @Inject(PUBLISHER_MODEL)
-        private model: Model<Publisher>,
+        private model: Model<Publisher>
     ) {}
 
     async findOne(id: string): Promise<Publisher> {
@@ -27,11 +27,16 @@ export class PublisherService {
         }).save();
     }
 
-    async update(id: string, updateDto: PublisherUpdateDto): Promise<Publisher> {
-        return this.model.findByIdAndUpdate(id, {
-            ...updateDto,
-            completedAt: new Date()
-        }).exec();
+    async update(
+        id: string,
+        updateDto: PublisherUpdateDto
+    ): Promise<Publisher> {
+        return this.model
+            .findByIdAndUpdate(id, {
+                ...updateDto,
+                completedAt: new Date()
+            })
+            .exec();
     }
 
     async delete(id: string): Promise<Publisher> {

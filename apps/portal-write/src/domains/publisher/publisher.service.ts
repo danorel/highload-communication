@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { RequestsService } from "@communication/api-utils";
-import { PublisherCreateDto, PublisherUpdateDto } from "@communication/dto";
-import { Publisher } from "@communication/schema";
+import { RequestsService } from '@communication/api-utils';
+import { PublisherCreateDto, PublisherUpdateDto } from '@communication/dto';
+import { Publisher } from '@communication/schema';
 
 @Injectable()
 export class PublisherService {
@@ -11,7 +11,10 @@ export class PublisherService {
         let publisher: Publisher;
 
         await this.requestsService
-            .post<Publisher, PublisherCreateDto>(`http://localhost:5003/publisher/`, createDto)
+            .post<Publisher, PublisherCreateDto>(
+                `http://localhost:5003/publisher/`,
+                createDto
+            )
             .forEach((data) => {
                 publisher = data;
             });
@@ -19,11 +22,17 @@ export class PublisherService {
         return publisher;
     }
 
-    async update(id: string, updateDto: PublisherUpdateDto): Promise<Publisher> {
+    async update(
+        id: string,
+        updateDto: PublisherUpdateDto
+    ): Promise<Publisher> {
         let publisher: Publisher;
 
         await this.requestsService
-            .put<Publisher, PublisherUpdateDto>(`http://localhost:5003/publisher/${id}`, updateDto)
+            .put<Publisher, PublisherUpdateDto>(
+                `http://localhost:5003/publisher/${id}`,
+                updateDto
+            )
             .subscribe((data) => {
                 publisher = data;
             });

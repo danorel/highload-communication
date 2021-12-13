@@ -1,6 +1,6 @@
 import { Controller, Param, Get } from '@nestjs/common';
-import { Publisher } from "@communication/schema";
-import { PublisherService } from "./publisher.service";
+import { Publisher } from '@communication/schema';
+import { PublisherService } from './publisher.service';
 
 @Controller('publisher')
 export class PublisherController {

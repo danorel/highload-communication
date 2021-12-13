@@ -1,7 +1,7 @@
 import { Controller, Param, Post, Body, Put, Delete } from '@nestjs/common';
-import { PublisherCreateDto, PublisherUpdateDto } from "@communication/dto";
-import { Publisher } from "@communication/schema";
-import { PublisherService } from "./publisher.service";
+import { PublisherCreateDto, PublisherUpdateDto } from '@communication/dto';
+import { Publisher } from '@communication/schema';
+import { PublisherService } from './publisher.service';
 
 @Controller('publisher')
 export class PublisherController {
@@ -13,7 +13,10 @@ export class PublisherController {
     }
 
     @Put(':id')
-    async update(@Param('id') id: string, @Body() updateDto: PublisherUpdateDto): Promise<Publisher> {
+    async update(
+        @Param('id') id: string,
+        @Body() updateDto: PublisherUpdateDto
+    ): Promise<Publisher> {
         return await this.service.update(id, updateDto);
     }
 
