@@ -172,7 +172,7 @@
       "summary": "Run multiple projects simultaneously.",
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-select",
-      "shellCommand": "rush-select -i test -i test:e2e -i test:cov -i test:watch -i test:debug -i start -i start:dev -i start:debug -i build:watch"
+      "shellCommand": "rush-select -i test -i test:e2e -i test:cov -i test:watch -i test:debug -i start -i start:dev -i start:debug -i build -i build:watch"
     },
     {
       "name": "test",

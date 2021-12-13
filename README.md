@@ -1,6 +1,6 @@
 # Sandbox
 
-Currently, it is not completed due to the complexity of the task.
+## Roadmap
 
 Required plan:
 - [x] Design the architecture.
@@ -9,16 +9,32 @@ Required plan:
 - [x] Implement read/write basic API.
 - [x] Implement read API with cache. (Using Cache Aside pattern)
 - [ ] Implement write API with message queue. (Using RPC pattern)
-- [ ] Implement request imitator.
-- [ ] Test/deploy application.
 - [x] Add CI: Github Actions.
+- [x] Test, lint application.
 
 Optional plan:
+- [ ] Implement request imitator.
+- [ ] Add versioning to application.
+- [ ] Add development/production configuration for apps.
+- [ ] Deploy application.
 - [ ] Migrate from docker-compose to kubernetes.
+- [ ] Configure CD with AWS.
 
-## Development
+## Installation
 
-### Environment
+```
+git clone git@github.com:danorel/highload-communication.git
+```
+
+### Prerequisites
+- [node.js](https://heynode.com/tutorial/install-nodejs-locally-nvm/) =16.13.0
+- [@microsoft/rush](https://rushjs.io/pages/intro/get_started/)
+
+### Development
+
+#### Environment
+
+Create `.env` file in the **root** of the application:
 
 ```
 NODE_ENV=development
@@ -42,7 +58,32 @@ RABBIT_MQ_API_PORT=5672
 RABBIT_MQ_UI_PORT=15672
 ```
 
-## Production
+#### Run
+
+Split run in **two separate terminal windows**:
+
+```
+docker-compose -f docker-compose.development.yaml up
+```
+
+And only after that:
+
+```
+rush update --full
+rush start
+```
+
+Last command will prompt which subprojects to launch and will run selected scripts. Choose next ones:
+- For **api** projects: `start:watch`
+- For **libs** projects: `build:watch`
+
+### Production
+
+Not ready yet...
+
+#### Environment
+
+Create `.env` file in the **root** of the application:
 
 ```
 NODE_ENV=production
@@ -70,5 +111,3 @@ REDIS_COMMANDER_PORT=8082
 RABBIT_MQ_API_PORT=5672
 RABBIT_MQ_UI_PORT=15672
 ```
-
-Not ready yet...
